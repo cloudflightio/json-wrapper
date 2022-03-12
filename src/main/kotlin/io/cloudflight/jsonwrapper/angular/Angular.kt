@@ -7,6 +7,9 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import io.cloudflight.jsonwrapper.Parser
 import java.io.File
 
+/**
+ * A simplified model of an angular.json file as described here: https://angular.io/guide/workspace-config
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Angular constructor(
     val projects: Map<String, Project> = emptyMap()

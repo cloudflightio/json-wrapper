@@ -7,7 +7,7 @@ import io.cloudflight.jsonwrapper.Parser
 import java.io.File
 
 /**
- * model of a package.json file
+ * A model of a package.json file
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 class NpmPackage {
