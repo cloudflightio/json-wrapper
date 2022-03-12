@@ -8,6 +8,6 @@ import com.fasterxml.jackson.annotation.JsonProperty
 data class Artifact @JsonCreator constructor(
     @JsonProperty("artifact") val artifact: String,
     @JsonProperty("classifier") val classifier: String?,
-    @JsonProperty("type") val type: String?,
+    @JsonProperty("type") val type: String,
     @JsonProperty("trail") val trail: List<String>?
 )

@@ -8,8 +8,8 @@ import java.io.File
 
 @JsonIgnoreProperties
 class Report {
-    var buildTool: BuildTool? = null
-    var buildToolVersion: String? = null
+    lateinit var buildTool: BuildTool
+    lateinit var buildToolVersion: String
     var pluginVersion: String? = null
 
     /**

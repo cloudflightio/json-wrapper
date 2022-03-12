@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 @JsonIgnoreProperties
 data class Project @JsonCreator constructor(
-    @JsonProperty("artifact") val artifact: String?,
-    @JsonProperty("packaging") val packaging: String?,
+    @JsonProperty("artifact") val artifact: String,
+    @JsonProperty("packaging") val packaging: String,
     @JsonProperty("url") val url: String?
 )
