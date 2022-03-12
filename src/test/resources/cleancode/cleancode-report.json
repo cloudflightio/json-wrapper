@@ -1,0 +1,73 @@
+{
+  "moduleName": "cleancode-commons",
+  "verificationResults": [
+    {
+      "pluginId": "gradle",
+      "pluginVersion": "0.8.2",
+      "pluginDocumentationUrl": "https://mydocs/io.cloudflight.cleancode.verifier/cleancode-verifier-gradle/0.8.2",
+      "verifications": [
+        {
+          "suppressionReason": null,
+          "ruleId": "dependencies.configurations.deprecated",
+          "description": "Do not use deprecated Gradle configurations",
+          "issues": [],
+          "suppressedIssueCount": 0
+        },
+        {
+          "suppressionReason": null,
+          "ruleId": "buildlog.errors.io.cloudflight.gradle.version",
+          "description": "Ensure that the build log does not contain any error log messages",
+          "issues": [
+            {
+              "suppressionReason": "CCV is compatible with Java 8",
+              "description": "Version 'javaVersion' is set to an older version (1.8.0) than its corresponding default (11.0.0)",
+              "hash": "79a1ceae"
+            },
+            {
+              "suppressionReason": "Gradle (6.7.1) bundles Kotlin 1.3.72",
+              "description": "Version 'kotlinVersion' is set to an older version (1.3.72) than its corresponding default (1.4.20)",
+              "hash": "869269e2"
+            }
+          ],
+          "suppressedIssueCount": 2
+        },
+        {
+          "suppressionReason": null,
+          "ruleId": "buildlog.warnings.org.gradle.api.Task",
+          "description": "Ensure that the build log does not contain any warning log messages",
+          "issues": [],
+          "suppressedIssueCount": 0
+        },
+        {
+          "suppressionReason": null,
+          "ruleId": "dependencies.managed-versions",
+          "description": "Do not use explicit versions in your dependencies, rather have constraints on the parent build.gradle",
+          "issues": [],
+          "suppressedIssueCount": 0
+        },
+        {
+          "suppressionReason": null,
+          "ruleId": "dependencies.enforced-platform",
+          "description": "Do not use enforcedPlatform, rather using platform.",
+          "issues": [],
+          "suppressedIssueCount": 0
+        },
+        {
+          "suppressionReason": null,
+          "ruleId": "dependencies.expose-api",
+          "description": "Do not expose external dependencies as 'api' without good reason.",
+          "issues": [],
+          "suppressedIssueCount": 0
+        },
+        {
+          "suppressionReason": null,
+          "ruleId": "dependencies.no-exclude-rules",
+          "description": "Do not define exclude rules. Exclusions are only allowed on configuration level.",
+          "issues": [],
+          "suppressedIssueCount": 0
+        }
+      ],
+      "suppressedIssueCount": 2
+    }
+  ]
+}

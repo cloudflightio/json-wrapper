@@ -1,0 +1,354 @@
+{
+  "buildTool": "Gradle",
+  "buildToolVersion": "6.7.1",
+  "pluginVersion": "1.8.1",
+  "parent": null,
+  "project": {
+    "artifact": "io.cloudflight.cleancode.commons:cleancode-api:0.8.1-SNAPSHOT",
+    "packaging": "jar",
+    "url": null
+  },
+  "compile": [
+    {
+      "artifact": "org.jetbrains.kotlin:kotlin-stdlib:1.3.72",
+      "classifier": null,
+      "type": "jar",
+      "trail": [
+        "org.jetbrains.kotlin:kotlin-reflect:1.3.72"
+      ]
+    },
+    {
+      "artifact": "org.jetbrains.kotlin:kotlin-stdlib-common:1.3.72",
+      "classifier": null,
+      "type": "jar",
+      "trail": [
+        "org.jetbrains.kotlin:kotlin-reflect:1.3.72",
+        "org.jetbrains.kotlin:kotlin-stdlib:1.3.72"
+      ]
+    },
+    {
+      "artifact": "org.jetbrains:annotations:13.0",
+      "classifier": null,
+      "type": "jar",
+      "trail": [
+        "org.jetbrains.kotlin:kotlin-reflect:1.3.72",
+        "org.jetbrains.kotlin:kotlin-stdlib:1.3.72"
+      ]
+    },
+    {
+      "artifact": "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72",
+      "classifier": null,
+      "type": "jar",
+      "trail": [
+        "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72"
+      ]
+    },
+    {
+      "artifact": "org.jetbrains.kotlin:kotlin-reflect:1.3.72",
+      "classifier": null,
+      "type": "jar",
+      "trail": []
+    },
+    {
+      "artifact": "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72",
+      "classifier": null,
+      "type": "jar",
+      "trail": []
+    }
+  ],
+  "provided": [
+    {
+      "artifact": "org.jetbrains.kotlin:kotlin-stdlib:1.3.72",
+      "classifier": null,
+      "type": "jar",
+      "trail": [
+        "org.jetbrains.kotlin:kotlin-reflect:1.3.72"
+      ]
+    },
+    {
+      "artifact": "org.jetbrains.kotlin:kotlin-stdlib-common:1.3.72",
+      "classifier": null,
+      "type": "jar",
+      "trail": [
+        "org.jetbrains.kotlin:kotlin-reflect:1.3.72",
+        "org.jetbrains.kotlin:kotlin-stdlib:1.3.72"
+      ]
+    },
+    {
+      "artifact": "org.jetbrains:annotations:13.0",
+      "classifier": null,
+      "type": "jar",
+      "trail": [
+        "org.jetbrains.kotlin:kotlin-reflect:1.3.72",
+        "org.jetbrains.kotlin:kotlin-stdlib:1.3.72"
+      ]
+    },
+    {
+      "artifact": "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72",
+      "classifier": null,
+      "type": "jar",
+      "trail": [
+        "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72"
+      ]
+    },
+    {
+      "artifact": "org.jetbrains.kotlin:kotlin-reflect:1.3.72",
+      "classifier": null,
+      "type": "jar",
+      "trail": []
+    },
+    {
+      "artifact": "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72",
+      "classifier": null,
+      "type": "jar",
+      "trail": []
+    }
+  ],
+  "runtime": [],
+  "test": [
+    {
+      "artifact": "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72",
+      "classifier": null,
+      "type": "jar",
+      "trail": []
+    },
+    {
+      "artifact": "org.jetbrains.kotlin:kotlin-stdlib:1.3.72",
+      "classifier": null,
+      "type": "jar",
+      "trail": [
+        "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72"
+      ]
+    },
+    {
+      "artifact": "org.jetbrains.kotlin:kotlin-stdlib-common:1.3.72",
+      "classifier": null,
+      "type": "jar",
+      "trail": [
+        "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72",
+        "org.jetbrains.kotlin:kotlin-stdlib:1.3.72"
+      ]
+    },
+    {
+      "artifact": "org.jetbrains:annotations:13.0",
+      "classifier": null,
+      "type": "jar",
+      "trail": [
+        "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72",
+        "org.jetbrains.kotlin:kotlin-stdlib:1.3.72"
+      ]
+    },
+    {
+      "artifact": "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72",
+      "classifier": null,
+      "type": "jar",
+      "trail": [
+        "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72"
+      ]
+    },
+    {
+      "artifact": "org.junit:junit-bom:5.6.3",
+      "classifier": null,
+      "type": "bom",
+      "trail": [
+        "org.junit.jupiter:junit-jupiter-engine:5.6.3"
+      ]
+    },
+    {
+      "artifact": "org.junit.jupiter:junit-jupiter-api:5.6.3",
+      "classifier": null,
+      "type": "jar",
+      "trail": [
+        "org.junit.jupiter:junit-jupiter-engine:5.6.3",
+        "org.junit:junit-bom:5.6.3"
+      ]
+    },
+    {
+      "artifact": "org.apiguardian:apiguardian-api:1.1.0",
+      "classifier": null,
+      "type": "jar",
+      "trail": [
+        "org.junit.jupiter:junit-jupiter-engine:5.6.3",
+        "org.junit:junit-bom:5.6.3",
+        "org.junit.jupiter:junit-jupiter-api:5.6.3"
+      ]
+    },
+    {
+      "artifact": "org.opentest4j:opentest4j:1.2.0",
+      "classifier": null,
+      "type": "jar",
+      "trail": [
+        "org.junit.jupiter:junit-jupiter-engine:5.6.3",
+        "org.junit:junit-bom:5.6.3",
+        "org.junit.jupiter:junit-jupiter-api:5.6.3"
+      ]
+    },
+    {
+      "artifact": "org.junit.platform:junit-platform-commons:1.6.3",
+      "classifier": null,
+      "type": "jar",
+      "trail": [
+        "org.junit.jupiter:junit-jupiter-engine:5.6.3",
+        "org.junit:junit-bom:5.6.3",
+        "org.junit.jupiter:junit-jupiter-api:5.6.3"
+      ]
+    },
+    {
+      "artifact": "org.junit.platform:junit-platform-engine:1.6.3",
+      "classifier": null,
+      "type": "jar",
+      "trail": [
+        "org.junit.jupiter:junit-jupiter-engine:5.6.3",
+        "org.junit:junit-bom:5.6.3"
+      ]
+    },
+    {
+      "artifact": "org.assertj:assertj-core:3.18.1",
+      "classifier": null,
+      "type": "jar",
+      "trail": []
+    },
+    {
+      "artifact": "org.junit.jupiter:junit-jupiter-engine:5.6.3",
+      "classifier": null,
+      "type": "jar",
+      "trail": []
+    }
+  ],
+  "development": [
+    {
+      "artifact": "org.gradle:gradle:6.7.1",
+      "classifier": null,
+      "type": "sdk",
+      "trail": []
+    },
+    {
+      "artifact": "io.cloudflight.gradle:cloudflight-gradle-plugin:5.13.9",
+      "classifier": null,
+      "type": "jar",
+      "trail": []
+    }
+  ],
+  "cleanCodeReport": {
+    "moduleName": "cleancode-api",
+    "verificationResults": [
+      {
+        "pluginId": "gradle",
+        "pluginVersion": "0.8.2",
+        "pluginDocumentationUrl": "https://docs.cloudflight.io/io.cloudflight.cleancode.verifier/cleancode-verifier-gradle/0.8.2",
+        "verifications": [
+          {
+            "ruleId": "dependencies.configurations.deprecated",
+            "description": "Do not use deprecated Gradle configurations",
+            "suppressionReason": null,
+            "issues": []
+          },
+          {
+            "ruleId": "dependencies.cloudflight.platform.modules",
+            "description": "Use the wrapper modules in the Cloudflight Platform instead of directly referencing 3rd party libraries",
+            "suppressionReason": null,
+            "issues": []
+          },
+          {
+            "ruleId": "dependencies.cloudflight.platform.server.config",
+            "description": "server Modules should include the platform-server-config",
+            "suppressionReason": null,
+            "issues": []
+          },
+          {
+            "ruleId": "dependencies.managed-versions",
+            "description": "Do not use explicit versions in your dependencies, rather have constraints on the parent build.gradle",
+            "suppressionReason": null,
+            "issues": []
+          },
+          {
+            "ruleId": "dependencies.enforced-platform",
+            "description": "Do not use enforcedPlatform, rather using platform.",
+            "suppressionReason": null,
+            "issues": []
+          },
+          {
+            "ruleId": "dependencies.expose-api",
+            "description": "Do not expose external dependencies as 'api' without good reason.",
+            "suppressionReason": null,
+            "issues": []
+          },
+          {
+            "ruleId": "dependencies.no-exclude-rules",
+            "description": "Do not define exclude rules. Exclusions are only allowed on configuration level.",
+            "suppressionReason": null,
+            "issues": []
+          },
+          {
+            "ruleId": "kotlin.configuration",
+            "description": "Ensure that the Kotlin build is configured correctly",
+            "suppressionReason": null,
+            "issues": []
+          }
+        ]
+      },
+      {
+        "pluginId": "archunit",
+        "pluginVersion": "0.8.2",
+        "pluginDocumentationUrl": "https://docs.cloudflight.io/io.cloudflight.cleancode.verifier/cleancode-verifier-archunit/0.8.2",
+        "verifications": [
+          {
+            "ruleId": "jdk.logging.static-final-loggers",
+            "description": "fields that have raw type org.slf4j.Logger and are declared in classes that reside outside of package '..api' should be private and should be static and should be final, because we agreed on this convention",
+            "suppressionReason": null,
+            "issues": []
+          },
+          {
+            "ruleId": "jdk.logging.no-streams",
+            "description": "no classes should access standard streams",
+            "suppressionReason": null,
+            "issues": []
+          },
+          {
+            "ruleId": "jdk.no-generic-exceptions",
+            "description": "no classes should throw generic exceptions",
+            "suppressionReason": null,
+            "issues": []
+          },
+          {
+            "ruleId": "jdk.logging.no-java-util-logging",
+            "description": "no classes should use java.util.logging",
+            "suppressionReason": null,
+            "issues": []
+          },
+          {
+            "ruleId": "jdk.no-jodatime",
+            "description": "no classes should use JodaTime, because modern Java projects use the [java.time] API instead",
+            "suppressionReason": null,
+            "issues": []
+          },
+          {
+            "ruleId": "architecture.packages.config",
+            "description": "Configuration should reside in one of these packages [..config..,..autoconfigure..]",
+            "suppressionReason": null,
+            "issues": []
+          },
+          {
+            "ruleId": "architecture.packages.controllers",
+            "description": "Controllers should reside in one of these packages [..web.., ..controller..]",
+            "suppressionReason": null,
+            "issues": []
+          },
+          {
+            "ruleId": "architecture.packages.entities",
+            "description": "Entities should reside in a package ..entity..",
+            "suppressionReason": null,
+            "issues": []
+          },
+          {
+            "ruleId": "architecture.packages.repositories",
+            "description": "Repositories should reside in a package ..repository..",
+            "suppressionReason": null,
+            "issues": []
+          }
+        ]
+      }
+    ]
+  },
+  "licenseRecords": []
+}

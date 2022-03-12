@@ -1,0 +1,23 @@
+{
+  "project": "Hibernate Validator Engine",
+  "description": "Hibernate's Jakarta Bean Validation reference implementation.",
+  "version": "6.1.6.Final",
+  "developers": [
+    "Emmanuel Bernard",
+    "Hardy Ferentschik",
+    "Gunnar Morling",
+    "Kevin Pollet",
+    "Davide D'Alto",
+    "Guillaume Smet",
+    "Marko Bekhta"
+  ],
+  "url": "",
+  "year": "",
+  "licenses": [
+    {
+      "license": "Apache License 2.0",
+      "license_url": "https://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "dependency": "org.hibernate.validator:hibernate-validator:6.1.6.Final"
+}

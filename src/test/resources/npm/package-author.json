@@ -1,0 +1,43 @@
+{
+  "name": "@hf-designer/photogroups",
+  "version": "1.2.0-SNAPSHOT",
+  "description": "Grouping mechanism for selectable images",
+  "author": "Catalysts",
+  "license": "ISC",
+  "private": true,
+  "main": "build/dist/designer-photogroups/src/index.js",
+  "types": "build/dist/designer-photogroups/src/index.d.ts",
+  "files": [
+    "build/dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint ./src --ext .js,.ts",
+    "lint:format": "prettier -c .",
+    "test": "npm run test:unit",
+    "test:unit": "ts-mocha -p tsconfig.json --paths src/**/*.spec.ts"
+  },
+  "peerDependencies": {
+    "rxjs": "6.5.5"
+  },
+  "devDependencies": {
+    "@types/assert": "1.4.6",
+    "@types/mocha": "7.0.2",
+    "@typescript-eslint/eslint-plugin": "2.27.0",
+    "@typescript-eslint/parser": "2.27.0",
+    "assert": "2.0.0",
+    "eslint": "6.8.0",
+    "husky": "4.2.5",
+    "mocha": "7.1.1",
+    "prettier": "^2.0.5",
+    "pretty-quick": "2.0.1",
+    "rxjs": "6.5.5",
+    "ts-mocha": "7.0.0",
+    "typescript": "3.8.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
+}
