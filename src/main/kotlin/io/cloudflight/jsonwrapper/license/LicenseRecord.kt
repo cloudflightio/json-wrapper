@@ -17,7 +17,7 @@ data class LicenseRecord @JsonCreator constructor(
 ) {
     companion object {
         fun readFromFile(file: File): LicenseRecord {
-            return Parser.parseFile(file, LicenseRecord::class.java, withKotlinSupport = false)
+            return Parser.parseFile(file, LicenseRecord::class.java)
         }
     }
 }

@@ -15,7 +15,6 @@ repositories {
 
 dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:2.11.3")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.3")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.6.3")
 }
 

@@ -11,6 +11,7 @@ class TrackerTest {
         val report: Report = Report.readFromFile(File("src/test/resources/tracker/dependencies.json"))
         assertEquals("6.7.1", report.buildToolVersion)
         assertEquals(2, report.development.size)
+        assertEquals("jar", report.project.packaging)
     }
 
 }

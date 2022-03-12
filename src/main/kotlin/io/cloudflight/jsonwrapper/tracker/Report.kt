@@ -16,18 +16,18 @@ class Report {
      * The parent pom.xml, only use this in maven builds, leave empty for gradle!!
      */
     var parent: Project? = null
-    var project: Project? = null
+    lateinit var project: Project
     var compile: List<Artifact> = emptyList()
     var provided: List<Artifact> = emptyList()
     var runtime: List<Artifact> = emptyList()
     var test: List<Artifact> = emptyList()
     var development: List<Artifact> = emptyList()
     var cleanCodeReport: CleanCodeReport? = null
-    val licenseRecords: List<LicenseRecord> = emptyList()
+    var licenseRecords: List<LicenseRecord> = emptyList()
 
     companion object {
         fun readFromFile(file: File): Report {
-            return Parser.parseFile(file, Report::class.java, withKotlinSupport = true)
+            return Parser.parseFile(file, Report::class.java)
         }
     }
 }

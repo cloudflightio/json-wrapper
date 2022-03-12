@@ -25,7 +25,7 @@ class NpmPackage {
 
     companion object {
         fun readFromFile(file: File): NpmPackage {
-            return Parser.parseFile(file, NpmPackage::class.java, withKotlinSupport = false)
+            return Parser.parseFile(file, NpmPackage::class.java)
         }
     }
 }

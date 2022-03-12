@@ -70,7 +70,7 @@ class CleanCodeReport @JsonCreator constructor(
 
     companion object {
         fun readFromFile(file: File): CleanCodeReport {
-            return Parser.parseFile(file, CleanCodeReport::class.java, withKotlinSupport = false)
+            return Parser.parseFile(file, CleanCodeReport::class.java)
         }
     }
 }
