@@ -27,4 +27,11 @@ class NpmTest {
         assertEquals("Catalysts", npmPackage.author?.name)
         assertTrue(npmPackage.private)
     }
+
+    @Test
+    fun parsePackageLockJson() {
+        val npmPackage: NpmPackageLock = NpmPackageLock.readFromFile(File("src/test/resources/npm/package-lock.json"))
+        assertEquals("core-ui", npmPackage.name)
+        assertEquals(1133, npmPackage.dependencies.size)
+    }
 }
