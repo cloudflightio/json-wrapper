@@ -8,7 +8,7 @@ plugins {
 
 description = "Kotlin Wrappers for popular JSON formats"
 group = "io.cloudflight.json"
-version = "0.3.0-SNAPSHOT"
+version = "0.3.1"
 
 repositories {
     mavenCentral()
