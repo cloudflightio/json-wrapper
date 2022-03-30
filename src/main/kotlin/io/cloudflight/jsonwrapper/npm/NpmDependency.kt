@@ -1,13 +1,9 @@
 package io.cloudflight.jsonwrapper.npm
 
-import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import com.fasterxml.jackson.annotation.JsonProperty
-
-@JsonIgnoreProperties(ignoreUnknown = true)
-class NpmDependency @JsonCreator constructor(
-    @JsonProperty("version") val version: String,
-    @JsonProperty("dev") val dev: Boolean = false,
-    @JsonProperty("requires") val requires: Map<String, String>?,
-    @JsonProperty("dependencies") val dependencies: Map<String, NpmDependency>?
+@kotlinx.serialization.Serializable
+class NpmDependency(
+    val version: String,
+    val dev: Boolean = false,
+    val requires: Map<String, String> = emptyMap(),
+    val dependencies: Map<String, NpmDependency> = emptyMap()
 )

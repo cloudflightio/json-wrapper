@@ -1,23 +1,33 @@
 package io.cloudflight.jsonwrapper.license
 
-import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonProperty
-import io.cloudflight.jsonwrapper.Parser
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.decodeFromStream
 import java.io.File
+import java.io.InputStream
 
-data class LicenseRecord @JsonCreator constructor(
-    @JsonProperty("project") val project: String,
-    @JsonProperty("description") val description: String?,
-    @JsonProperty("version") val version: String,
-    @JsonProperty("developers") val developers: List<String>,
-    @JsonProperty("url") val url: String?,
-    @JsonProperty("year") val year: String?,
-    @JsonProperty("licenses") val licenses: List<LicenseEntry>,
-    @JsonProperty("dependency") val dependency: String
+@kotlinx.serialization.Serializable
+data class LicenseRecord(
+    val project: String,
+    val description: String?,
+    val version: String,
+    val developers: List<String>,
+    val url: String?,
+    val year: String?,
+    val licenses: List<LicenseEntry>,
+    val dependency: String
 ) {
     companion object {
+
+        private val json = Json {
+            ignoreUnknownKeys = true
+        }
+
         fun readFromFile(file: File): LicenseRecord {
-            return Parser.parseFile(file, LicenseRecord::class.java)
+            return json.decodeFromStream(file.inputStream())
+        }
+
+        fun readFromStream(inputStream: InputStream): List<LicenseRecord> {
+            return json.decodeFromStream(inputStream)
         }
     }
 }

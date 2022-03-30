@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "1.6.10"
+    kotlin("plugin.serialization") version "1.6.0"
     `maven-publish`
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
     signing
@@ -7,15 +8,15 @@ plugins {
 
 description = "Kotlin Wrappers for popular JSON formats"
 group = "io.cloudflight.json"
-version = "0.2.0"
+version = "0.3.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.11.3")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.6.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.8.2")
 }
 
 java {

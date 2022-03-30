@@ -1,14 +1,14 @@
 package io.cloudflight.jsonwrapper.cleancode
 
-import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonIgnore
-import com.fasterxml.jackson.annotation.JsonProperty
-import io.cloudflight.jsonwrapper.Parser
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.decodeFromStream
 import java.io.File
 
-class CleanCodeReport @JsonCreator constructor(
-    @JsonProperty("moduleName") val moduleName: String,
-    @JsonProperty("verificationResults") val verificationResults: List<PluginVerificationResults>
+@Serializable
+class CleanCodeReport(
+    val moduleName: String,
+    val verificationResults: List<PluginVerificationResults>
 
 ) {
     fun getIssueCount(includingSuppressedIssues: Boolean): Int =
@@ -69,50 +69,53 @@ class CleanCodeReport @JsonCreator constructor(
 
 
     companion object {
+        private val json = Json {
+            ignoreUnknownKeys = true
+        }
+
         fun readFromFile(file: File): CleanCodeReport {
-            return Parser.parseFile(file, CleanCodeReport::class.java)
+            return json.decodeFromStream(file.inputStream())
         }
     }
 }
 
-class PluginVerificationResults @JsonCreator constructor(
-    @JsonProperty("pluginId") val pluginId: String,
-    @JsonProperty("pluginVersion") val pluginVersion: String,
-    @JsonProperty("pluginDocumentationUrl") val pluginDocumentationUrl: String?,
-    @JsonProperty("verifications") val verifications: List<RuleVerification>
+@Serializable
+class PluginVerificationResults(
+    val pluginId: String,
+    val pluginVersion: String,
+    val pluginDocumentationUrl: String?,
+    val verifications: List<RuleVerification>
 ) {
-    @JsonIgnore
     fun getIssueCount(includingSuppressedIssues: Boolean): Int =
         verifications.sumOf { it.getIssueCount(includingSuppressedIssues) }
 
-    @JsonIgnore
     fun getSuppressedIssueCount(): Int =
         getIssueCount(true) - getIssueCount(false)
 }
 
-class RuleVerification @JsonCreator constructor(
-    @JsonProperty("ruleId") val ruleId: String,
-    @JsonProperty("description") val description: String,
-    @JsonProperty("suppressionReason") suppressionReason: String?,
-    @JsonProperty("issues") val issues: List<RuleIssueVerification>
-) : Suppressible(suppressionReason) {
+@Serializable
+class RuleVerification(
+    val ruleId: String,
+    val description: String,
+    override val suppressionReason: String?,
+    val issues: List<RuleIssueVerification>
+) : Suppressible {
 
-    @JsonIgnore
     fun getIssueCount(includingSuppressedIssues: Boolean): Int =
         if (includingSuppressedIssues) issues.count() else if (suppressionReason != null) 0 else issues.count { it.suppressionReason == null }
 
-    @JsonIgnore
     fun getSuppressedIssueCount(): Int =
         getIssueCount(true) - getIssueCount(false)
 
 }
 
-class RuleIssueVerification @JsonCreator constructor(
-    @JsonProperty("description") val description: String,
-    @JsonProperty("hash") val hash: String,
-    @JsonProperty("suppressionReason") suppressionReason: String?
-) : Suppressible(suppressionReason)
+@Serializable
+class RuleIssueVerification(
+    val description: String,
+    val hash: String,
+    override val suppressionReason: String?
+) : Suppressible
 
-open class Suppressible(
+interface Suppressible {
     val suppressionReason: String?
-)
+}

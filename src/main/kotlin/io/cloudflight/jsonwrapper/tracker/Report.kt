@@ -1,12 +1,13 @@
 package io.cloudflight.jsonwrapper.tracker
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import io.cloudflight.jsonwrapper.Parser
 import io.cloudflight.jsonwrapper.cleancode.CleanCodeReport
 import io.cloudflight.jsonwrapper.license.LicenseRecord
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.decodeFromStream
 import java.io.File
 
-@JsonIgnoreProperties
+@Serializable
 class Report {
     lateinit var buildTool: BuildTool
     lateinit var buildToolVersion: String
@@ -26,8 +27,16 @@ class Report {
     var licenseRecords: List<LicenseRecord> = emptyList()
 
     companion object {
+        private val json = Json {
+            ignoreUnknownKeys = true
+        }
+
         fun readFromFile(file: File): Report {
-            return Parser.parseFile(file, Report::class.java)
+            return json.decodeFromStream(file.inputStream())
+        }
+
+        fun readFromJson(jsonString: String): Report {
+            return json.decodeFromString(serializer(), jsonString)
         }
     }
 }

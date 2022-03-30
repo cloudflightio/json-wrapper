@@ -1,6 +1,6 @@
 package io.cloudflight.jsonwrapper.license
 
-import io.cloudflight.jsonwrapper.Parser
+import kotlinx.serialization.json.Json
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
@@ -67,14 +67,20 @@ class LicenseTest {
             dependency = "io.cloudflight.platform:platform-bom:1.0"
         )
 
-        val json = Parser.objectMapper.writeValueAsString(record1)
 
-        val record2 = Parser.objectMapper.readValue(json, LicenseRecord::class.java)
+        val json = Json.encodeToString(LicenseRecord.serializer(), record1)
+        val record2 = Json.decodeFromString(LicenseRecord.serializer(), json)
 
         assertEquals(
             record1,
             record2,
             "equals/hashcode must be implemented properly as we are using HashSets later to ensure that licenses are only printed once to the reports"
         )
+    }
+
+    @Test
+    fun parseLicenses() {
+        val entries = LicenseEntry.readFromStream(LicenseEntry::class.java.classLoader.getResourceAsStream("license/licenses.json"))
+        assertEquals(2, entries.size)
     }
 }
