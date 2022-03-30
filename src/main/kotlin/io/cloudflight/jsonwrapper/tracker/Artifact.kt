@@ -1,13 +1,11 @@
 package io.cloudflight.jsonwrapper.tracker
 
-import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import com.fasterxml.jackson.annotation.JsonProperty
+import kotlinx.serialization.Serializable
 
-@JsonIgnoreProperties
-data class Artifact @JsonCreator constructor(
-    @JsonProperty("artifact") val artifact: String,
-    @JsonProperty("classifier") val classifier: String?,
-    @JsonProperty("type") val type: String,
-    @JsonProperty("trail") val trail: List<String>?
+@Serializable
+data class Artifact(
+    val artifact: String,
+    val classifier: String?,
+    val type: String,
+    val trail: List<String>?
 )

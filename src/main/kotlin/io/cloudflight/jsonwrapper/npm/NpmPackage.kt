@@ -1,15 +1,13 @@
 package io.cloudflight.jsonwrapper.npm
 
-import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import com.fasterxml.jackson.annotation.JsonProperty
-import io.cloudflight.jsonwrapper.Parser
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.*
 import java.io.File
 
 /**
  * A model of a package.json file
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
+@Serializable
 class NpmPackage {
     lateinit var name: String
     lateinit var version: String
@@ -17,6 +15,7 @@ class NpmPackage {
     var license: String? = null
     var homepage: String? = null
     var description: String? = null
+    @Serializable(with = PersonByStringSerializer::class)
     var author: Person? = null
     var contributors: List<Person> = emptyList()
     var scripts: Map<String, String> = emptyMap()
@@ -24,19 +23,27 @@ class NpmPackage {
     var devDependencies: Map<String, String> = emptyMap()
 
     companion object {
+        private val json = Json {
+            ignoreUnknownKeys = true
+        }
+
         fun readFromFile(file: File): NpmPackage {
-            return Parser.parseFile(file, NpmPackage::class.java)
+            return json.decodeFromStream(file.inputStream())
         }
     }
 }
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-class Person @JsonCreator constructor(
-    @JsonProperty("name") val name: String,
-    @JsonProperty("url") val url: String?,
-    @JsonProperty("email") val email: String?
-) {
+private object PersonByStringSerializer : JsonTransformingSerializer<Person>(Person.serializer()) {
+    override fun transformDeserialize(element: JsonElement): JsonElement =
+        if (element is JsonPrimitive) JsonObject(mapOf("name" to element)) else element
+}
 
-    @JsonCreator
+@Serializable
+class Person(
+    val name: String,
+    val url: String? = null,
+    val email: String? = null
+) {
     constructor(name: String) : this(name, null, null)
 }
+

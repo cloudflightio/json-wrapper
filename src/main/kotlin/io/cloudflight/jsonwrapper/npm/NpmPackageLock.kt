@@ -1,9 +1,7 @@
 package io.cloudflight.jsonwrapper.npm
 
-import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import com.fasterxml.jackson.annotation.JsonProperty
-import io.cloudflight.jsonwrapper.Parser
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.decodeFromStream
 import java.io.File
 
 /**
@@ -11,15 +9,19 @@ import java.io.File
  *
  * @author Klaus Lehner
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
-class NpmPackageLock @JsonCreator constructor(
-    @JsonProperty("name") val name: String,
-    @JsonProperty("version") val version: String,
-    @JsonProperty("dependencies") val dependencies: Map<String, NpmDependency> = emptyMap()
+@kotlinx.serialization.Serializable
+class NpmPackageLock(
+    val name: String,
+    val version: String,
+    val dependencies: Map<String, NpmDependency> = emptyMap()
 ) {
     companion object {
+        private val json = Json {
+            ignoreUnknownKeys = true
+        }
+
         fun readFromFile(file: File): NpmPackageLock {
-            return Parser.parseFile(file, NpmPackageLock::class.java)
+            return json.decodeFromStream(file.inputStream())
         }
     }
 }

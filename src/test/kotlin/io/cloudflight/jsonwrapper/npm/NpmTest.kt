@@ -34,4 +34,11 @@ class NpmTest {
         assertEquals("core-ui", npmPackage.name)
         assertEquals(1133, npmPackage.dependencies.size)
     }
+
+    @Test
+    fun parsePackageLockJsonWithoutDependencies() {
+        val npmPackage: NpmPackageLock = NpmPackageLock.readFromFile(File("src/test/resources/npm/empty-package-lock.json"))
+        assertEquals("npmbuild", npmPackage.name)
+        assertEquals(0, npmPackage.dependencies.size)
+    }
 }
