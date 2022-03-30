@@ -97,7 +97,7 @@ class PluginVerificationResults(
 class RuleVerification(
     val ruleId: String,
     val description: String,
-    override val suppressionReason: String?,
+    override val suppressionReason: String? = null,
     val issues: List<RuleIssueVerification>
 ) : Suppressible {
 
@@ -113,7 +113,7 @@ class RuleVerification(
 class RuleIssueVerification(
     val description: String,
     val hash: String,
-    override val suppressionReason: String?
+    override val suppressionReason: String? = null
 ) : Suppressible
 
 interface Suppressible {
