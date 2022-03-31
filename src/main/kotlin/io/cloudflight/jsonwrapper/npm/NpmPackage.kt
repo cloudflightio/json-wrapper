@@ -17,7 +17,7 @@ class NpmPackage {
     var description: String? = null
     @Serializable(with = PersonByStringSerializer::class)
     var author: Person? = null
-    var contributors: List<Person> = emptyList()
+    var contributors: List<@Serializable(with = PersonByStringSerializer::class) Person> = emptyList()
     var scripts: Map<String, String> = emptyMap()
     var dependencies: Map<String, String> = emptyMap()
     var devDependencies: Map<String, String> = emptyMap()
@@ -43,7 +43,4 @@ class Person(
     val name: String,
     val url: String? = null,
     val email: String? = null
-) {
-    constructor(name: String) : this(name, null, null)
-}
-
+)

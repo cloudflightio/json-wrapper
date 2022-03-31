@@ -20,12 +20,18 @@ class NpmTest {
     }
 
     @Test
-    @Throws(IOException::class)
     fun parsePackageJsonWithSingleLineAuthor() {
         val npmPackage: NpmPackage = NpmPackage.readFromFile(File("src/test/resources/npm/package-author.json"))
         Assertions.assertNotNull(npmPackage.author)
         assertEquals("Catalysts", npmPackage.author?.name)
         assertTrue(npmPackage.private)
+    }
+
+    @Test
+    fun parsePackageJsonBootstrap() {
+        val npmPackage: NpmPackage = NpmPackage.readFromFile(File("src/test/resources/npm/package-bootstrap.json"))
+        Assertions.assertNotNull(npmPackage.author)
+        assertEquals("Twitter, Inc.",npmPackage.contributors.get(0).name)
     }
 
     @Test
