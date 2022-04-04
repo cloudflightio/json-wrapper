@@ -1,6 +1,7 @@
 package io.cloudflight.jsonwrapper.cleancode
 
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 import java.io.File
 
@@ -11,6 +12,13 @@ class CleanCodeTest {
         val report: CleanCodeReport =
             CleanCodeReport.readFromFile(File("src/test/resources/cleancode/cleancode-report.json"))
         assertEquals("cleancode-commons", report.moduleName)
+        assertNotNull(
+            report.prettyPrint(
+                onlyRulesWithIssues = false,
+                printSuppressedIssues = true,
+                printDocumentationUrl = true
+            )
+        )
     }
 
 }

@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.io.File
 
-
 class AngularTest {
 
     @Test
@@ -22,6 +21,7 @@ class AngularTest {
         val angular: Angular = Angular.readFromFile(File("src/test/resources/angular/angular-core.json"))
         assertNotNull(angular.projects)
         assertEquals(16, angular.projects.size)
+        angular.getSourceRootsOfAllProjects().first()
     }
 
     /**
@@ -39,6 +39,18 @@ class AngularTest {
         assertNotNull(angular.projects)
         assertEquals(2, angular.projects.size)
         assertEquals(1, angular.getSourceRootsOfAllProjects().size)
-        assertEquals("src", angular.getSourceRootsOfAllProjects().stream().findFirst().get())
+        assertEquals("src", angular.getSourceRootsOfAllProjects().first())
+    }
+
+    @Test
+    fun emptySourceRoot() {
+        assertTrue(
+            Angular(
+                mapOf(
+                    "project1" to Angular.Project(sourceRoot = null),
+                    "project2" to Angular.Project(sourceRoot = "")
+                )
+            ).getSourceRootsOfAllProjects().isEmpty()
+        )
     }
 }
