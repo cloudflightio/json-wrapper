@@ -3,6 +3,7 @@ plugins {
     kotlin("plugin.serialization") version "1.6.0"
     `maven-publish`
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
+    id("org.jetbrains.kotlinx.kover") version "0.5.0"
     signing
 }
 
