@@ -9,7 +9,7 @@ import java.io.File
  * A simplified model of an angular.json file as described here: https://angular.io/guide/workspace-config
  */
 @Serializable
-class Angular constructor(
+class Angular(
     val projects: Map<String, Project> = emptyMap()
 ) {
 
