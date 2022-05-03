@@ -23,8 +23,9 @@ dependencies {
 java {
     withJavadocJar()
     withSourcesJar()
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
+    }
 }
 
 tasks.test {
@@ -35,7 +36,8 @@ tasks.jar {
     manifest {
         val configuration = project.configurations.getByName(JavaPlugin.RUNTIME_CLASSPATH_CONFIGURATION_NAME)
         val classpath = configuration.files.joinToString(" ") { it.name }
-        val createdBy = "${System.getProperty("java.version")} (${System.getProperty("java.vendor")})"
+        val compiler  = javaToolchains.compilerFor(java.toolchain).get().metadata
+        val createdBy = compiler.javaRuntimeVersion + " (" + compiler.vendor + ")"
 
         attributes(
             "Class-Path" to classpath,
