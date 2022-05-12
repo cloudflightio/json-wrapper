@@ -1,6 +1,6 @@
 plugins {
     id("io.cloudflight.autoconfigure-gradle") version "0.2.0"
-    kotlin("plugin.serialization") version "1.6.0"
+    kotlin("plugin.serialization") version "1.5.20"
     `maven-publish`
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
     id("org.jetbrains.kotlinx.kover") version "0.5.0"
@@ -9,7 +9,7 @@ plugins {
 
 description = "Kotlin Wrappers for popular JSON formats"
 group = "io.cloudflight.json"
-version = "0.3.3"
+version = "0.4.0"
 
 autoConfigure {
     java {
@@ -17,7 +17,7 @@ autoConfigure {
         vendorName.set("Cloudflight")
     }
     kotlin {
-        kotlinVersion.set("1.6.0")
+        kotlinVersion.set("1.5.20")
     }
 }
 
@@ -26,7 +26,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.8.2")
 }
 
