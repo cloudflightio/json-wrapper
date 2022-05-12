@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.6.10"
+    id("io.cloudflight.autoconfigure-gradle") version "0.2.0"
     kotlin("plugin.serialization") version "1.6.0"
     `maven-publish`
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
@@ -10,6 +10,16 @@ plugins {
 description = "Kotlin Wrappers for popular JSON formats"
 group = "io.cloudflight.json"
 version = "0.3.3"
+
+autoConfigure {
+    java {
+        languageVersion.set(JavaLanguageVersion.of(8))
+        vendorName.set("Cloudflight")
+    }
+    kotlin {
+        kotlinVersion.set("1.6.0")
+    }
+}
 
 repositories {
     mavenCentral()
@@ -22,31 +32,6 @@ dependencies {
 
 java {
     withJavadocJar()
-    withSourcesJar()
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(8))
-    }
-}
-
-tasks.test {
-    useJUnitPlatform()
-}
-
-tasks.jar {
-    manifest {
-        val configuration = project.configurations.getByName(JavaPlugin.RUNTIME_CLASSPATH_CONFIGURATION_NAME)
-        val classpath = configuration.files.joinToString(" ") { it.name }
-        val compiler  = javaToolchains.compilerFor(java.toolchain).get().metadata
-        val createdBy = compiler.javaRuntimeVersion + " (" + compiler.vendor + ")"
-
-        attributes(
-            "Class-Path" to classpath,
-            "Created-By" to createdBy,
-            "Implementation-Vendor" to "Cloudflight",
-            "Implementation-Title" to project.name,
-            "Implementation-Version" to project.version
-        )
-    }
 }
 
 publishing {
