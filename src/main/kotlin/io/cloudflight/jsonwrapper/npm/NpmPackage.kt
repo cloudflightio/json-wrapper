@@ -28,7 +28,9 @@ class NpmPackage {
         }
 
         fun readFromFile(file: File): NpmPackage {
-            return json.decodeFromStream(file.inputStream())
+            return file.inputStream().use {
+                json.decodeFromStream(it)
+            }
         }
     }
 }

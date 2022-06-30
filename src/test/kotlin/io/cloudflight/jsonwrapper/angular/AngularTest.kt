@@ -53,4 +53,13 @@ class AngularTest {
             ).getSourceRootsOfAllProjects().isEmpty()
         )
     }
+
+    @Test
+    fun `release handle after reading the file`() {
+        val file = File("src/test/resources/angular/myProject-angular.json")
+        val copy = File("src/test/resources/angular/myProject-angular-copy.json")
+        file.copyTo(copy, overwrite = true)
+        Angular.readFromFile(copy)
+        assertTrue(copy.delete(), "file can be deleted right after deleting")
+    }
 }

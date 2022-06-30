@@ -74,7 +74,9 @@ class CleanCodeReport(
         }
 
         fun readFromFile(file: File): CleanCodeReport {
-            return json.decodeFromStream(file.inputStream())
+            return file.inputStream().use {
+                json.decodeFromStream(it)
+            }
         }
     }
 }
