@@ -28,7 +28,9 @@ class Angular(
         }
 
         fun readFromFile(file: File): Angular {
-            return json.decodeFromStream(file.inputStream())
+            return file.inputStream().use {
+                json.decodeFromStream(it)
+            }
         }
     }
 }

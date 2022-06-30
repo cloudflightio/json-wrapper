@@ -1,5 +1,5 @@
 plugins {
-    id("io.cloudflight.autoconfigure-gradle") version "0.2.0"
+    id("io.cloudflight.autoconfigure-gradle") version "0.5.3"
     kotlin("plugin.serialization") version "1.6.0"
     `maven-publish`
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
@@ -9,7 +9,7 @@ plugins {
 
 description = "Kotlin Wrappers for popular JSON formats"
 group = "io.cloudflight.json"
-version = "0.3.3"
+version = "0.3.4"
 
 autoConfigure {
     java {

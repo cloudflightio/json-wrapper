@@ -32,7 +32,9 @@ class Report {
         }
 
         fun readFromFile(file: File): Report {
-            return json.decodeFromStream(file.inputStream())
+            return file.inputStream().use {
+                json.decodeFromStream(it)
+            }
         }
 
         fun readFromJson(jsonString: String): Report {

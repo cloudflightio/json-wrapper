@@ -19,11 +19,15 @@ data class LicenseEntry(
         }
 
         fun readFromFile(file: File): LicenseEntry {
-            return json.decodeFromStream(file.inputStream())
+            return file.inputStream().use {
+                json.decodeFromStream(it)
+            }
         }
 
         fun readFromStream(inputStream: InputStream): List<LicenseEntry> {
-            return json.decodeFromStream(inputStream)
+            return inputStream.use {
+                json.decodeFromStream(it)
+            }
         }
     }
 }
