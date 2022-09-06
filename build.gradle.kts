@@ -9,7 +9,7 @@ plugins {
 
 description = "Kotlin Wrappers for popular JSON formats"
 group = "io.cloudflight.json"
-version = "0.3.4"
+version = "0.3.5"
 
 autoConfigure {
     java {
