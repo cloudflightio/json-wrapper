@@ -1,8 +1,17 @@
 name: Publish package to the Maven Central Repository
 
 on:
-  release:
-    types: [created]
+  workflow_dispatch:
+    inputs:
+      scope:
+        description: 'the scope of the version'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
 
 jobs:
   publish:
@@ -12,10 +21,14 @@ jobs:
       - name: Set up Java
         uses: actions/setup-java@v2
         with:
-          java-version: '8'
+          java-version: '11'
           distribution: 'temurin'
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+      - name: Create Tag
+        uses: gradle/gradle-build-action@937999e9cc2425eddc7fd62d1053baf041147db7
+        with:
+          arguments: check reckonTagCreate -Preckon.stage=final -Preckon.scope=${{ inputs.scope }}
       - name: Publish package
         uses: gradle/gradle-build-action@937999e9cc2425eddc7fd62d1053baf041147db7
         with:
