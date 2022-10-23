@@ -17,6 +17,10 @@ autoConfigure {
     }
 }
 
+project.tasks.create("printVersionName") {
+    println(project.version)
+}
+
 repositories {
     mavenCentral()
 }
