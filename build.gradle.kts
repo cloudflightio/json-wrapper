@@ -22,8 +22,8 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.8.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.0")
 }
 
 publishing {
