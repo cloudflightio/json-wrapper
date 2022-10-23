@@ -29,7 +29,7 @@ jobs:
       - name: Publish version
         run: |
           echo "# Version = ${{steps.retrieve_version.outputs.VERSION_NAME}}" >> $GITHUB_STEP_SUMMARY
-      - name: Upload coverage reports
-        uses: codecov/codecov-action@v2
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v3
         with:
-          files: build/reports/kover/report.xml
+          files: build/reports/kover/html/
