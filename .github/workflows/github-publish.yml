@@ -22,18 +22,24 @@ jobs:
         with:
           fetch-depth: 0
       - name: Set up Java
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3
         with:
           java-version: '11'
           distribution: 'temurin'
       - name: Validate Gradle wrapper
-        uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+        uses: gradle/wrapper-validation-action@v1
       - name: Create Tag
-        uses: gradle/gradle-build-action@937999e9cc2425eddc7fd62d1053baf041147db7
+        uses: gradle/gradle-build-action@v2
         with:
-          arguments: check reckonTagPush -Preckon.stage=final -Preckon.scope=${{ inputs.scope }}
+          arguments: check reckonTagPush koverReport -Preckon.stage=final -Preckon.scope=${{ inputs.scope }}
+      - name : Retrieve Version
+        run: echo "VERSION_NAME=$(${{github.workspace}}/gradlew -q printVersionName)" >> $GITHUB_OUTPUT
+        id: retrieve_version
+      - name: Publish version to Github
+        run: |
+          echo "# ${{steps.retrieve_version.outputs.VERSION_NAME}}" >> $GITHUB_STEP_SUMMARY
       - name: Publish package
-        uses: gradle/gradle-build-action@937999e9cc2425eddc7fd62d1053baf041147db7
+        uses: gradle/gradle-build-action@v2
         with:
           arguments: publishToSonatype closeAndReleaseSonatypeStagingRepository
         env:
@@ -41,9 +47,8 @@ jobs:
           MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
           PGP_SECRET: ${{ secrets.PGP_SECRET }}
           PGP_PASSPHRASE: ${{ secrets.PGP_PASSPHRASE }}
-      - name : Retrieve Version
-        run: echo "VERSION_NAME=$(${{github.workspace}}/gradlew -q printVersionName)" >> $GITHUB_OUTPUT
-        id: retrieve_version
-      - name: Publish version
-        run: |
-          echo "# ${{steps.retrieve_version.outputs.VERSION_NAME}}" >> $GITHUB_STEP_SUMMARY
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: kover-report
+          path: build/reports/kover/html/
