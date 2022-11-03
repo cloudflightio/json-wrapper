@@ -23,7 +23,7 @@ jobs:
         with:
           arguments: build koverReport
       - name : Retrieve Version
-        run: echo "VERSION_NAME=$(${{github.workspace}}/gradlew -q printVersionName)" >> $GITHUB_OUTPUT
+        run: echo "VERSION_NAME=$(${{github.workspace}}/gradlew -q clfPrintVersion)" >> $GITHUB_OUTPUT
         id: retrieve_version
       - name: Publish version to Github
         run: |

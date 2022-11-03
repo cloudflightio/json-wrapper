@@ -1,5 +1,4 @@
 plugins {
-    id("io.cloudflight.autoconfigure-gradle") version "0.7.1"
     kotlin("plugin.serialization") version "1.7.20"
     `maven-publish`
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
@@ -17,10 +16,6 @@ autoConfigure {
     }
 }
 
-project.tasks.create("printVersionName") {
-    println(project.version)
-}
-
 repositories {
     mavenCentral()
 }
@@ -28,6 +23,12 @@ repositories {
 dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.0")
+}
+
+tasks.compileKotlin.configure {
+    kotlinOptions {
+        freeCompilerArgs = freeCompilerArgs + "-opt-in=kotlin.io.path.ExperimentalPathApi"
+    }
 }
 
 publishing {
