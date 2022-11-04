@@ -2,7 +2,6 @@ plugins {
     kotlin("plugin.serialization") version "1.7.20"
     `maven-publish`
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
-    id("org.jetbrains.kotlinx.kover") version "0.6.1"
     signing
 }
 
@@ -18,6 +17,12 @@ autoConfigure {
 
 repositories {
     mavenCentral()
+}
+
+tasks.create("clfPrintVersionToFile") {
+    doLast {
+        File(System.getenv("GITHUB_OUTPUT")).appendText("VERSION_NAME=${project.version}${System.lineSeparator()}")
+    }
 }
 
 dependencies {
