@@ -1,5 +1,5 @@
 plugins {
-    id("io.cloudflight.autoconfigure-settings") version "0.8.1"
+    id("io.cloudflight.autoconfigure-settings") version "0.8.3"
 }
 
 configure<org.ajoberstar.reckon.gradle.ReckonExtension>() {
