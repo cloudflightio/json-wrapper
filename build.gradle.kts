@@ -1,5 +1,5 @@
 plugins {
-    kotlin("plugin.serialization") version "1.7.20"
+    kotlin("plugin.serialization") version "1.9.10"
     `maven-publish`
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
     signing
@@ -26,8 +26,8 @@ tasks.create("clfPrintVersionToFile") {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.0")
 }
 
 tasks.compileKotlin.configure {
